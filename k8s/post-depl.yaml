@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post
+  template:
+    metadata:
+      labels:
+        app: post
+    spec:
+      containers:
+        - name: post
+          image: yaseenomer/post
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-srv
+  labels:
+    app: post-srv
+spec:
+  selector:
+    app: post-srv
+  ports:
+    - name: post-srv
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    

@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  database:
+    image: mongo
+    restart: always
+    volumes:
+      - my_data:/data/db
+  post:
+    build:
+      context: ./post
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    volumes:
+      -  /app/node_modules
+      - ./post:/app
+    ports:
+      - "8080:8080"
+
+  comment:
+    build:
+      context: ./comment
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    volumes:
+      -  /app/node_modules
+      - ./comment:/app
+    ports:
+      - "8081:8081"
+volumes:
+   my_data:

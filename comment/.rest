@@ -1,0 +1,13 @@
+
+
+GET http://localhost:8081/api/comments
+
+###
+
+POST http://localhost:8081/api/comments
+Content-Type: application/json
+
+{
+    "body": "This is a comment",
+    "postId": "post1"
+}

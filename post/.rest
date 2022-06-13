@@ -1,0 +1,18 @@
+GET https://blog.dev/api/posts
+
+###
+
+
+
+POST  http://blog.dev/api/posts 
+Content-Type: application/json
+
+{
+  "title": "My first post",
+  "body": "This is my first post"
+}
+
+###
+
+DELETE http://localhost:8080/api/posts/629e238d82a00100344974b4
+
